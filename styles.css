@@ -3,11 +3,11 @@
   color:#243b39;
   background:#f3f6f0;
   --tinta:#243b39;
-  --verde-azulado:#267c73;
+  --verde-azulado:#1c625a;
   --musgo:#b9cf9b;
   --areia:#f5e8d2;
   --linha:#dce5da;
-  --suave:#778b84
+  --suave:#52635b
 }
 * {
   box-sizing:border-box
@@ -49,7 +49,7 @@ header {
   letter-spacing:.11em
 }
 .selo-demonstracao {
-  color:#7d9188
+  color:#56645e
 }
 main {
   max-width:1160px;
@@ -78,7 +78,7 @@ main {
 }
 .destaque>div:first-child>p:last-child {
   max-width:520px;
-  color:#778b84;
+  color:var(--suave);
   font-size:13px;
   line-height:1.7
 }
@@ -92,12 +92,12 @@ main {
   border-radius:10px
 }
 .nota-destaque span {
-  color:#b18d4d
+  color:#6b5222
 }
 .nota-destaque p {
   font-size:10px;
   line-height:1.6;
-  color:#7c704f;
+  color:#5b4b2c;
   margin:0
 }
 .painel {
@@ -129,7 +129,7 @@ main {
   width:34px;
   height:34px;
   background:#e8f1e4;
-  color:#59844c;
+  color:#416a37;
   border-radius:50%
 }
 .filtros {
@@ -141,7 +141,7 @@ main {
 .filtro {
   border:0;
   background:transparent;
-  color:#7c8f87;
+  color:var(--suave);
   padding:7px 10px;
   border-radius:5px;
   font:600 10px "Segoe UI";
@@ -187,7 +187,7 @@ main {
 .corpo-solicitacao p {
   font-size:10px;
   line-height:1.5;
-  color:#829189;
+  color:var(--suave);
   margin:0
 }
 .metadados-solicitacao {
@@ -198,18 +198,18 @@ main {
 }
 .metadados-solicitacao span {
   font-size:8px;
-  color:#98a69e
+  color:var(--suave)
 }
 .situacao {
   border-radius:20px;
   padding:4px 7px;
   background:#fff2dc;
-  color:#a37633!important;
+  color:#75501b!important;
   font-weight:600
 }
 .situacao.concluida {
   background:#e8f1e4;
-  color:#59844c!important
+  color:#416a37!important
 }
 .vazio {
   font-size:11px;
@@ -226,7 +226,7 @@ main {
 }
 .introducao-formulario {
   font-size:10px;
-  color:#829189;
+  color:var(--suave);
   line-height:1.6;
   margin:9px 0 20px
 }
@@ -278,7 +278,7 @@ input:focus,select:focus,textarea:focus {
 footer {
   border-top:1px solid var(--linha);
   padding:19px 0 30px;
-  color:#9aa99e;
+  color:var(--suave);
   font-size:8px;
   margin-top:38px
 }
