@@ -1,74 +1,75 @@
-const requests = [
-  { topic: "Orientação digital", summary: "Demonstração de apoio para acessar um serviço online.", status: "Em andamento", state: "open", date: "Hoje · 09:20" },
-  { topic: "Acesso a serviços", summary: "Exemplo fictício de encaminhamento para atendimento.", status: "Concluída", state: "done", date: "Ontem · 15:10" },
-  { topic: "Informação comunitária", summary: "Pedido de informações sobre canais de participação.", status: "Em andamento", state: "open", date: "Ontem · 11:45" }
+﻿const solicitacoes = [
+  { tema: "Orientação digital", resumo: "Demonstração de apoio para acessar um serviço na internet.", situacao: "Em andamento", estado: "andamento", data: "Hoje · 09:20" },
+  { tema: "Acesso a serviços", resumo: "Exemplo fictício de encaminhamento para atendimento.", situacao: "Concluída", estado: "concluido", data: "Ontem · 15:10" },
+  { tema: "Informação comunitária", resumo: "Pedido de informações sobre canais de participação.", situacao: "Em andamento", estado: "andamento", data: "Ontem · 11:45" }
 ];
 
-const container = document.querySelector("#requests");
-const empty = document.querySelector("#empty");
-const total = document.querySelector("#request-total");
-const feedback = document.querySelector("#form-feedback");
-const filters = [...document.querySelectorAll(".filter")];
-let activeFilter = "all";
+const listaSolicitacoes = document.querySelector("#solicitacoes");
+const vazio = document.querySelector("#vazio");
+const totalSolicitacoes = document.querySelector("#total-solicitacoes");
+const retornoFormulario = document.querySelector("#retorno-formulario");
+const filtros = [...document.querySelectorAll(".filtro")];
+let filtroAtivo = "todos";
 
-function render() {
-  const visible = requests.filter((request) => activeFilter === "all" || request.state === activeFilter);
-  container.replaceChildren();
-  for (const request of visible) {
-    const item = document.createElement("article");
-    item.className = "request";
-    const icon = document.createElement("span");
-    icon.className = "request-icon";
-    icon.textContent = request.state === "done" ? "✓" : "↗";
-    const body = document.createElement("div");
-    body.className = "request-body";
-    const title = document.createElement("h3");
-    title.textContent = request.topic;
-    const summary = document.createElement("p");
-    summary.textContent = request.summary;
-    const meta = document.createElement("div");
-    meta.className = "request-meta";
-    const date = document.createElement("span");
-    date.textContent = request.date;
-    const status = document.createElement("span");
-    status.className = `status${request.state === "done" ? " done" : ""}`;
-    status.textContent = request.status;
-    meta.append(date, status);
-    body.append(title, summary, meta);
-    item.append(icon, body);
-    container.append(item);
+function desenhar() {
+  const visiveis = solicitacoes.filter((solicitacao) => filtroAtivo === "todos" || solicitacao.estado === filtroAtivo);
+  listaSolicitacoes.replaceChildren();
+  for (const solicitacao of visiveis) {
+    const solicitacaoEl = document.createElement("article");
+    solicitacaoEl.className = "solicitacao";
+    const icone = document.createElement("span");
+    icone.className = "icone-solicitacao";
+    icone.textContent = solicitacao.estado === "concluido" ? "✓" : "↗";
+    const corpo = document.createElement("div");
+    corpo.className = "corpo-solicitacao";
+    const titulo = document.createElement("h3");
+    titulo.textContent = solicitacao.tema;
+    const resumo = document.createElement("p");
+    resumo.textContent = solicitacao.resumo;
+    const metadados = document.createElement("div");
+    metadados.className = "metadados-solicitacao";
+    const data = document.createElement("span");
+    data.textContent = solicitacao.data;
+    const situacao = document.createElement("span");
+    situacao.className = `situacao${solicitacao.estado === "concluido" ? " concluida" : ""}`;
+    situacao.textContent = solicitacao.situacao;
+    metadados.append(data, situacao);
+    corpo.append(titulo, resumo, metadados);
+    solicitacaoEl.append(icone, corpo);
+    listaSolicitacoes.append(solicitacaoEl);
   }
-  total.textContent = String(requests.length).padStart(2, "0");
-  empty.hidden = visible.length > 0;
+  totalSolicitacoes.textContent = String(solicitacoes.length).padStart(2, "0");
+  vazio.hidden = visiveis.length > 0;
 }
 
-for (const button of filters) {
-  button.addEventListener("click", () => {
-    activeFilter = button.dataset.status;
-    for (const item of filters) {
-      const active = item === button;
-      item.classList.toggle("active", active);
-      item.setAttribute("aria-pressed", String(active));
+for (const botao of filtros) {
+  botao.addEventListener("click", () => {
+    filtroAtivo = botao.dataset.situacao;
+    for (const filtroAtual of filtros) {
+      const ativo = filtroAtual === botao;
+      filtroAtual.classList.toggle("ativo", ativo);
+      filtroAtual.setAttribute("aria-pressed", String(ativo));
     }
-    render();
+    desenhar();
   });
 }
 
-document.querySelector("#request-form").addEventListener("submit", (event) => {
-  event.preventDefault();
-  const topic = document.querySelector("#topic").value;
-  const description = document.querySelector("#description").value.trim();
-  if (!topic || !description) return;
-  requests.unshift({ topic, summary: description, status: "Em andamento", state: "open", date: "Agora · demonstração" });
-  document.querySelector("#request-form").reset();
-  feedback.textContent = "Solicitação adicionada somente a esta sessão.";
-  activeFilter = "all";
-  for (const button of filters) {
-    const active = button.dataset.status === "all";
-    button.classList.toggle("active", active);
-    button.setAttribute("aria-pressed", String(active));
+document.querySelector("#formulario-solicitacao").addEventListener("submit", (evento) => {
+  evento.preventDefault();
+  const tema = document.querySelector("#tema").value;
+  const descricao = document.querySelector("#descricao").value.trim();
+  if (!tema || !descricao) return;
+  solicitacoes.unshift({ tema, resumo: descricao, situacao: "Em andamento", estado: "andamento", data: "Agora · demonstração" });
+  document.querySelector("#formulario-solicitacao").reset();
+  retornoFormulario.textContent = "Solicitação adicionada somente a esta sessão.";
+  filtroAtivo = "todos";
+  for (const botao of filtros) {
+    const ativo = botao.dataset.situacao === "todos";
+    botao.classList.toggle("ativo", ativo);
+    botao.setAttribute("aria-pressed", String(ativo));
   }
-  render();
+  desenhar();
 });
 
-render();
+desenhar();
+

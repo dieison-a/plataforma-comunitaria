@@ -1,34 +1,35 @@
-<!doctype html>
+﻿<!doctype html>
 <html lang="pt-BR">
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="description" content="Protótipo de atendimento comunitário com dados totalmente fictícios.">
-  <title>Vínculo — Community Service Platform</title>
+  <title>Vínculo — Plataforma de serviço comunitário</title>
   <link rel="stylesheet" href="styles.css">
   <script src="app.js" defer></script>
 </head>
 <body>
-  <header><a class="brand" href="#"><span class="brand-icon">v</span> vínculo</a><span class="demo-badge">PROTÓTIPO · DADOS FICTÍCIOS</span></header>
+  <header><a class="marca" href="#"><span class="icone-marca">v</span> vínculo</a><span class="selo-demonstracao">PROTÓTIPO · DADOS SIMULADOS</span></header>
   <main>
-    <section class="hero"><div><p class="eyebrow">SERVIÇO COMUNITÁRIO / DEMO</p><h1>Escuta que vira<br><span>ação.</span></h1><p>Um espaço demonstrativo para organizar necessidades, acompanhar encaminhamentos e dar retorno com clareza.</p></div><div class="hero-note"><span>✦</span><p>Solicitações e pessoas desta demonstração são fictícias.</p></div></section>
-    <section class="dashboard">
-      <div class="requests-panel">
-        <div class="panel-head"><div><p class="eyebrow">ACOMPANHAMENTO</p><h2>Solicitações</h2></div><span id="request-total" class="total">—</span></div>
-        <div class="filters" role="group" aria-label="Filtrar solicitações"><button class="filter active" data-status="all" aria-pressed="true">Todas</button><button class="filter" data-status="open" aria-pressed="false">Em andamento</button><button class="filter" data-status="done" aria-pressed="false">Concluídas</button></div>
-        <div id="requests" class="requests" aria-live="polite"></div>
-        <p id="empty" class="empty" hidden>Nenhuma solicitação neste filtro.</p>
+    <section class="destaque"><div><p class="sobretitulo">SERVIÇO COMUNITÁRIO / DEMONSTRAÇÃO</p><h1>Escuta que vira<br><span>ação.</span></h1><p>Um espaço demonstrativo para organizar necessidades, acompanhar encaminhamentos e dar retorno com clareza.</p></div><div class="nota-destaque"><span>✦</span><p>Solicitações e pessoas desta demonstração são fictícias.</p></div></section>
+    <section class="painel">
+      <div class="painel-solicitacoes">
+        <div class="cabecalho-painel"><div><p class="sobretitulo">ACOMPANHAMENTO</p><h2>Solicitações</h2></div><span id="total-solicitacoes" class="total">—</span></div>
+        <div class="filtros" role="group" aria-label="Filtrar solicitações"><button class="filtro ativo" data-situacao="todos" aria-pressed="true">Todas</button><button class="filtro" data-situacao="andamento" aria-pressed="false">Em andamento</button><button class="filtro" data-situacao="concluido" aria-pressed="false">Concluídas</button></div>
+        <div id="solicitacoes" class="solicitacoes" aria-live="polite"></div>
+        <p id="vazio" class="vazio" hidden>Nenhuma solicitação neste filtro.</p>
       </div>
-      <aside class="form-panel"><p class="eyebrow">NOVO REGISTRO</p><h2>Como podemos ajudar?</h2><p class="form-intro">Este formulário é local e não envia informações.</p>
-        <form id="request-form">
-          <label for="topic">Tema</label><select id="topic" required><option value="">Selecione um tema</option><option>Orientação digital</option><option>Acesso a serviços</option><option>Informação comunitária</option></select>
-          <label for="description">Resumo fictício</label><textarea id="description" rows="3" maxlength="140" placeholder="Ex.: precisa de orientação para acessar um serviço online." required></textarea>
-          <button class="submit" type="submit">Adicionar à demonstração <span>↗</span></button>
+      <aside class="painel-formulario"><p class="sobretitulo">NOVO REGISTRO</p><h2>Como podemos ajudar?</h2><p class="introducao-formulario">Este formulário é local e não envia informações.</p>
+        <form id="formulario-solicitacao">
+          <label for="tema">Tema</label><select id="tema" required><option value="">Selecione um tema</option><option>Orientação digital</option><option>Acesso a serviços</option><option>Informação comunitária</option></select>
+          <label for="descricao">Resumo fictício</label><textarea id="descricao" rows="3" maxlength="140" placeholder="Ex.: precisa de orientação para acessar um serviço na internet." required></textarea>
+          <button class="enviar" type="submit">Adicionar ao cenário <span>↗</span></button>
         </form>
-        <p id="form-feedback" class="feedback" aria-live="polite"></p>
+        <p id="retorno-formulario" class="retorno" aria-live="polite"></p>
       </aside>
     </section>
     <footer>VÍNCULO · PROTÓTIPO LOCAL · SEM DADOS REAIS OU ARMAZENAMENTO</footer>
   </main>
 </body>
 </html>
+
